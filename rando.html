@@ -41,6 +41,14 @@
       }
       return tf.tensor(color, [400, 300, 3], 'int32');
     }
+            window.onload=function(){
+                
+
+                setTimeout(function(){
+                    var tensor = tf.fromPixels(canvas);
+                    tensor.print();
+                },2000)
+            }
   </script>
 </body>
 
