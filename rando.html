@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.7"></script>
+</head>
+
+<body>
+  <canvas id="canvasImg"> </canvas>
+
+  <script>
+    window.onload = function () {
+      var tensorImg = randomTensor();
+      tensorImg.print();
+
+      var canvas = document.getElementById("canvasImg");
+      canvas.width = 800;
+      canvas.height = 600;
+      tf.toPixels(tensorImg, canvas)
+
+    }
+
+    function randomTensor() {
+      var color = new Array();
+      for (let i = 0; i < 400; i++) {
+        color[i] = new Array();
+        for (let j = 0; j < 300; j++) {
+          color[i][j] = new Array();
+          color[i][j] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() *
+            256)];
+        }
+      }
+      return tf.tensor(color, [400, 300, 3], 'int32');
+    }
+  </script>
+</body>
+
+</html>

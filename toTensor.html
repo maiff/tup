@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.7"></script>
+        <style>
+#canvasImg{
+    width:320px;
+    height:480px;
+}
+        </style>
+    </head>
+    <body>
+        <img id="originImg" src="./000.png" alt="" >
+        <canvas id="canvasImg"> </canvas>
+
+        <script>
+            window.onload=function(){
+                var originImg = document.getElementById("originImg");
+                var canvas = document.getElementById("canvasImg");
+                canvas.width=320;
+                canvas.height=480;
+                canvas.getContext("2d").drawImage(originImg, 0, 0);    
+
+                setTimeout(function(){
+                    var tensor = tf.fromPixels(canvas);
+                    tensor.print();
+                },2000)
+            }
+        </script>
+    </body>
+</html>
